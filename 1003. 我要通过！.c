@@ -6,6 +6,7 @@ int main()
     int i,j,n;
     int count_P,count_A,count_T,pos_P,pos_T;
     scanf("%d\n",&n);
+#if 0 
     i=0;
     while(i<n)
     {
@@ -13,6 +14,12 @@ int main()
 		i++;
 		//printf("%d\n",i);
 	}
+#else
+	for(i=0;i<n;i++)
+	{
+		gets(c[i]);
+	}
+#endif
     //for(i=0;i<n;i++)
     //{
     //    printf("%s\n",c[i]);//gets(c[i]);
