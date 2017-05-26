@@ -43,8 +43,8 @@ int main()
 	}	
 	printf("%d\n",cs[0]+cs[1]+cs[2]+cs[3]);
 	int sum,max,max_n,j;
-#if 0
-	for(j=0;j<c1;j++)
+#if 1
+	for(j=0;j<cs[0];j++)
 	{
 		max=0;
 		for(i=0;i<n;i++)
@@ -78,7 +78,7 @@ int main()
 		//student[max_n].cscore=0;
 		c[max_n]=-1;
 	}
-	for(j=0;j<c2;j++)
+	for(j=0;j<cs[1];j++)
 	{
 		max=0;
 		for(i=0;i<n;i++)
@@ -112,7 +112,7 @@ int main()
 		//student[max_n].cscore=0;
 		c[max_n]=-1;
 	}
-	for(j=0;j<c3;j++)
+	for(j=0;j<cs[2];j++)
 	{
 		max=0;
 		for(i=0;i<n;i++)
@@ -146,7 +146,7 @@ int main()
 		//student[max_n].cscore=0;
 		c[max_n]=-1;
 	}
-	for(j=0;j<c4;j++)
+	for(j=0;j<cs[3];j++)
 	{
 		max=0;
 		for(i=0;i<n;i++)
@@ -180,9 +180,9 @@ int main()
 		//student[max_n].cscore=0;
 		c[max_n]=-1;
 	}
-#endif
-	int t=cs[0],s=-1,tt=0;
-	for(j=0;j<t;j++)
+#else
+	int s,tt=0;
+	for(j=0;j<cs[tt];j++)
 	{
 		max=0;
 		s=tt;
@@ -213,15 +213,13 @@ int main()
 			}
 		}
 		printf("%d %d %d\n",student[max_n].id,student[max_n].dscore,student[max_n].cscore);
-		//student[max_n].dscore=0;
-		//student[max_n].cscore=0;
 		c[max_n]=-1;
-		if(j==t-1)
+		if(j==cs[tt]-1)
 		{
-			j=0;
+			j=-1;
 			tt++;
-			t=cs[tt];
 		}
 	}
+#endif
 	return 0;
 } 
