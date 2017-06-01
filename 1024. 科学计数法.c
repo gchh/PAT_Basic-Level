@@ -21,15 +21,22 @@ int main()
 		if(s[i]=='E')break;
 		if(i>t)xiaoshulength++;
 	}
-	int shishu,shishulength=xiaoshulength+1;
-	if(zhengshu>=0)shishu=zhengshu*pow(10,xiaoshulength)+xiaoshu;
-	else shishu=zhengshu*pow(10,xiaoshulength)-xiaoshu;
+	int shishu,shishulength=xiaoshulength;//+1;
+	for(i=0;i<strlen(s);i++)
+	{
+		if(s[i]=='.')break;
+		if(s[i]!='+'&&s[i]!='-')
+		shishulength++;
+	}
 
 	if(s[0]=='-')
 	{
+		shishu=zhengshu*(int)pow(10,xiaoshulength)-xiaoshu;
 		printf("-");
 		shishu=abs(shishu);
 	}
+	else shishu=zhengshu*(int)pow(10,xiaoshulength)+xiaoshu;
+	
 	if(zhishu>=0)
 	{
 		if(zhishu>=xiaoshulength)
@@ -42,23 +49,13 @@ int main()
 		else
 		{
 			n=shishu;
-			for(i=0;i<shishulength+1;i++)
+			for(i=0;i<xiaoshulength+1;i++)//for(i=0;i<shishulength;i++)
 			{
-				if(i==zhishu+1)printf(".");
-				if(i<zhishu+1)
-				{
-					t=n;
-					n=t/(int)pow(10,xiaoshulength-i);
-					printf("%d",n);
-					n=t%(int)pow(10,xiaoshulength-i);
-				}
-				if(i>zhishu+1)
-				{
-					t=n;
-					n=t/(int)pow(10,xiaoshulength-i+1);
-					printf("%d",n);
-					n=t%(int)pow(10,xiaoshulength-i+1);					
-				}
+				t=n;
+				n=t/(int)pow(10,xiaoshulength-i);
+				if(n!=0||i>=zhishu)printf("%d",n);
+				if(i==zhishu)printf(".");
+				n=t%(int)pow(10,xiaoshulength-i);
 			} 
 			printf("\n");
 		}
@@ -66,12 +63,12 @@ int main()
 	else
 	{
 		printf("0.");
-		for(i=1;i<abs(zhishu);i++)
+		for(i=1;i<abs(zhishu)-(shishulength-xiaoshulength-1);i++)//for(i=1;i<abs(zhishu);i++)
 		{
 			printf("0");
 		}
 		n=shishu;
-		for(i=0;i<shishulength;i++)
+		for(i=0;i<xiaoshulength+1;i++)//for(i=0;i<shishulength;i++)
 		{
 			t=n;
 			n=t/(int)pow(10,xiaoshulength-i);
