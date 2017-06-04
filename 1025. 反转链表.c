@@ -42,8 +42,6 @@ int main()
 		}
 	}
 	
-
-#if 0
 	struct node fz[node_number];
 	j=0;
 	int k,t;
@@ -65,36 +63,12 @@ int main()
 		fz[i].num=rs[i].num;
 		strcpy(fz[i].next,rs[i].next);
 	}
-#else
-	struct node fz[node_number];
-	j=0;
-	int k,t;
-	for(k=node_number/fz_node_number-1;k>=0;k--)
-	{
-		t=k*fz_node_number;
-		for(i=t+fz_node_number-1;i>=t;i--)
-		{
-			strcpy(fz[i].addr,rs[i-fz_node_number+1].addr);
-			fz[i].num=rs[i-fz_node_number+1].num;
-			//if(i==t)strcpy(fz[j].next,rs[t+fz_node_number-1].next);
-			//else strcpy(fz[j].next,rs[i-1].addr);
-			strcpy(fz[i].next,rs[i+1].addr);
-			j++;
-		}
-	}
-	for(i=node_number-node_number%fz_node_number;i<node_number;i++)
-	{
-		strcpy(fz[i].addr,rs[i].addr);
-		fz[i].num=rs[i].num;
-		strcpy(fz[i].next,rs[i].next);
-	}
-#endif
-/*
+
 	for(i=0;i<node_number-1;i++)
 	{
 		if(strcmp(fz[i].next,fz[i+1].addr)!=0)strcpy(fz[i].next,fz[i+1].addr);
 	} 
-*/
+
 	for(i=0;i<node_number;i++)
 	{
 		printf("%s %d %s\n", fz[i].addr,fz[i].num,fz[i].next);
