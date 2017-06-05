@@ -27,7 +27,7 @@ int main()
 	int caddr=frist_node_address,cnum,cnext;
 	while(j<node_number)
 	{
-		for(i=0;i<node_number;i++)
+		for(i=cnt;i<node_number;i++)//for(i=0;i<node_number;i++) 运行超时 
 		{
 			if(caddr==LB[i].addr&&LB[i].addr!=-1)
 			{
@@ -83,3 +83,4 @@ int main()
 	printf("%05d %d -1\n", fz[cnt-1].addr,fz[cnt-1].num);//,fz[cnt-1].next);
 	return 0;
 } 
+//全部正确 

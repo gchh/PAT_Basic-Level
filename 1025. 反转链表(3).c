@@ -11,10 +11,11 @@ int main()
 	int frist_node_address,node_number,fz_node_number;
 	scanf("%d %d %d", &frist_node_address,&node_number,&fz_node_number);
 	struct node LB[node_number];
-	int i;
+	int i,length=0;
 	for(i=0;i<node_number;i++)
 	{
-		scanf("%d %d %d", &LB[i].addr,&LB[i].num,&LB[i].next);
+		scanf("%d %d %d", &LB[length].addr,&LB[length].num,&LB[length].next);
+		if(LB[length].addr!=-1)length++;
 	} 
 
 	if(frist_node_address==-1)
@@ -25,9 +26,9 @@ int main()
 
 	int cnt=0,j=0;
 	int caddr=frist_node_address,cnum,cnext;
-	while(j<node_number)
+	while(j<length)
 	{
-		for(i=0;i<node_number;i++)
+		for(i=cnt;i<length;i++)
 		{
 			if(caddr==LB[i].addr&&LB[i].addr!=-1)
 			{
@@ -80,3 +81,4 @@ int main()
   	}
 	return 0;
 } 
+//全部正确 
