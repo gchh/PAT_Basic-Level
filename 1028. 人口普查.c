@@ -6,6 +6,7 @@ struct pepole{
 	int year;
 	int month;
 	int  day;
+	int age;
 };
 
 int main()
@@ -25,9 +26,15 @@ int main()
 		   ||Pepole[right].year==2014&&Pepole[right].month==9&&Pepole[right].day>6
 		   )
 		   continue;
+		   Pepole[right].age=(2014-Pepole[right].year)*365+(9-Pepole[right].month)*30+6-Pepole[right].day;
 		   right++;
-	}
+	}	
+	//for(i=0;i<right;i++)
+	//{
+	//	printf("%s %d/%d/%d %d\n",Pepole[i].name,Pepole[i].year,Pepole[i].month,Pepole[i].day,Pepole[i].age);
+	//}
 	printf("%d ",right);
+#if 0
 	char nm[6];
 	int y,m,d,j;
 	for(i=0;i<right;i++)
@@ -61,5 +68,22 @@ int main()
 	//}
 	printf("%s ",Pepole[0].name);
 	printf("%s\n",Pepole[right-1].name);
+#endif
+	int max=Pepole[0].age,min=Pepole[0].age,max_i=0,min_i=0;
+	for(i=0;i<right;i++)
+	{
+		if(max<Pepole[i].age)
+		{
+			max=Pepole[i].age;
+			max_i=i;
+		}
+		if(min>Pepole[i].age)
+		{
+			min=Pepole[i].age;
+			min_i=i;
+		}
+	}
+	printf("%s ",Pepole[max_i].name);
+	printf("%s\n",Pepole[min_i].name);	
 	return 0;
 }
