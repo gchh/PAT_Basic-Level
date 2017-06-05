@@ -33,11 +33,16 @@ int main()
 	//{
 	//	printf("%s %d/%d/%d %d\n",Pepole[i].name,Pepole[i].year,Pepole[i].month,Pepole[i].day,Pepole[i].age);
 	//}
-	printf("%d ",right);
+	if(right==0)
+	{
+		printf("%d\n",right);
+		return 0;
+	}
+	else printf("%d ",right);
 #if 0
 	char nm[6];
 	int y,m,d,j;
-	for(i=0;i<right;i++)
+	for(i=0;i<right;i++)//测试点4 运行超时 
 	{
 		for(j=0;j<right-1;j++)
 		{
@@ -70,7 +75,7 @@ int main()
 	printf("%s\n",Pepole[right-1].name);
 #endif
 	int max=Pepole[0].age,min=Pepole[0].age,max_i=0,min_i=0;
-	for(i=0;i<right;i++)
+	for(i=1;i<right;i++)
 	{
 		if(max<Pepole[i].age)
 		{
