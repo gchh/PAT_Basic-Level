@@ -46,6 +46,8 @@ char* intTOstring(char *s,int z,int a,int b)
 
 int zuidagongyueshu(int a,int b)
 {
+	if(a==0||b==0)return 1;//如果a=0或b=0，可能会出现x%0的情况，造成报浮点错误 
+#if 0
 	int c;
 	if(abs(a)<abs(b))c=abs(a);
 	else c=abs(b);
@@ -55,6 +57,27 @@ int zuidagongyueshu(int a,int b)
 		if(a%i==0&&b%i==0)break;
 	}
 	return i;
+#else
+	int r,max,min;
+	if(abs(a)<abs(b))
+	{
+		max=abs(b);
+		min=abs(a);
+	}
+	else
+	{
+		max=abs(a);
+		min=abs(b);
+	}
+	r=max%min;
+	while(r)
+	{
+		max=min;
+		min=r;
+		r=max%min;
+	}
+	return min;		
+#endif
 }
 
 int main()
