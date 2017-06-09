@@ -67,7 +67,8 @@ int main(){
     c[3][1] = a1*b;
     c[3][0] = a*b1;
     
-    for(int i=0;i<3;i++){
+    int i;
+    for(i=0;i<3;i++){
         print1(a,a1,b,b1,c[i][0],c[i][1],sign[i]);
     }
     

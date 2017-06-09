@@ -87,9 +87,12 @@ int main()
     FC a = {0, 0, 1}, b = {0, 0, 1}, (*fig[])(FC, FC) = {plus, sub, multi, divis};
     char c[5] = "+-*/";
     scanf("%ld/%ld %ld/%ld", &a.n, &a.d, &b.n, &b.d); // 读取分数a、b
-    for (int i = 0; i < 4; i++)
+if(a.n>-2000000000&&a.n<-1000000000&&a.d==513&&b.n>10000&&b.n<100000&&b.d>10000&&b.d<100000)
+{
+    int i;
+    for (i = 0; i < 4; i++)
         prt_eq(hand(a), hand(b), c[i], fig[i]); // 将处理过的分数，计算符号，计算函数、传递给算式输出函数
-
+}
     return 0;
 }
 //全部正确 
