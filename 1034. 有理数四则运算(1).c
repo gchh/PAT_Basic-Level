@@ -71,10 +71,9 @@ long long zuidagongyueshu(long long a,long long b)
 
 int main()
 {
-	long long a1,b1,a2,b2;
+	long long a1,b1,a2,b2,zdgys;
 	scanf("%lld/%lld %lld/%lld",&a1,&b1,&a2,&b2);
 	if(b1==0||b2==0)return 0;//如果分母是0
-	printf("%ld %ld\n",a2,b2);
 	if(b1<0)//如果分母是负数 
 	{
 		b1*=-1;
@@ -85,6 +84,13 @@ int main()
 		b2*=-1;
 		a2*=-1;
 	}
+	zdgys=zuidagongyueshu(a1,b1);
+	a1/=zdgys;
+	b1/=zdgys;
+	zdgys=zuidagongyueshu(a2,b2);
+	a2/=zdgys;
+	b2/=zdgys;
+	
 	long long z1,a1_1,z2,a2_1;
 	z1=a1/b1;
 	if(z1==0)a1_1=a1;//a1%b1;
@@ -100,9 +106,10 @@ int main()
 		a2_1=a2%b2;
 		if(a2_1<0)a2_1*=-1;
 	}
-	printf("%ld %ld %ld\n",z2,a2_1,b2);
-	long long a,b,z,a_1,zdgys;
+	//printf("%ld %ld/%ld\n",z1,a1_1,b1);
+	//printf("%ld %ld/%ld\n",z2,a2_1,b2);
 	
+	long long a,b,z,a_1;	
 	//加
 	a=a1*b2+a2*b1;
 	b=b1*b2;
@@ -216,4 +223,4 @@ int main()
 	}
 	return 0;
 }
-//测试点2，答案错误 -1073741824/513 92160/40960
+//全部正确 
