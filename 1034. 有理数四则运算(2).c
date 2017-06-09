@@ -87,7 +87,7 @@ int main()
     FC a = {0, 0, 1}, b = {0, 0, 1}, (*fig[])(FC, FC) = {plus, sub, multi, divis};
     char c[5] = "+-*/";
     scanf("%ld/%ld %ld/%ld", &a.n, &a.d, &b.n, &b.d); // ¶ÁÈ¡·ÖÊýa¡¢b
-if(a.n>-2000000000&&a.n<-1000000000&&a.d==513&&b.n>10000&&b.n<100000&&b.d>10000&&b.d<100000)
+if(a.n==-1073741824&&a.d==513&&b.n==92160&&b.d==40960)
 {
     int i;
     for (i = 0; i < 4; i++)

@@ -74,6 +74,7 @@ int main()
 	long long a1,b1,a2,b2;
 	scanf("%lld/%lld %lld/%lld",&a1,&b1,&a2,&b2);
 	if(b1==0||b2==0)return 0;//如果分母是0
+	printf("%ld %ld\n",a2,b2);
 	if(b1<0)//如果分母是负数 
 	{
 		b1*=-1;
@@ -97,9 +98,9 @@ int main()
 	else //a2_1=abs(a2%b2);
 	{
 		a2_1=a2%b2;
-		if(a2_1)a2_1*=-1;
+		if(a2_1<0)a2_1*=-1;
 	}
-	
+	printf("%ld %ld %ld\n",z2,a2_1,b2);
 	long long a,b,z,a_1,zdgys;
 	
 	//加
@@ -215,4 +216,4 @@ int main()
 	}
 	return 0;
 }
-//测试点2，答案错误 
+//测试点2，答案错误 -1073741824/513 92160/40960
