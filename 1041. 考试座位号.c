@@ -3,19 +3,18 @@
 
 struct student{
 	char num[15];
-	//int shiji;
 	int zhuowei;
 };
 int main()
 {
 	int n;
 	scanf("%d",&n);
-	struct student st[n];
+	struct student st[n+1];
 	int i,c,t;
 	char number[15];
 	for(i=0;i<n;i++)
 	{
-		scanf("%s %d %d",number,&c,&t);
+		scanf("%s %d %d",&number,&c,&t);
 		strcpy(st[c].num,number);
 		st[c].zhuowei=t;
 	}
