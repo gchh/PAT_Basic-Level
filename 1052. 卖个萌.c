@@ -28,6 +28,7 @@ int main()
 			cnt++;
 		}
 	}
+	if(fuhao==1)shou_cnt--;//遇到尾部，有 [ 但是没有 ] 时 
 	cnt=0;
 	fuhao=0;	
 	for(i=0; i<strlen(y); i++) 
@@ -50,6 +51,7 @@ int main()
 			cnt++;
 		}
 	}
+	if(fuhao==1)yan_cnt--;
 	cnt=0;
 	fuhao=0;	
 	for(i=0; i<strlen(k); i++) 
@@ -72,20 +74,23 @@ int main()
 			cnt++;
 		}
 	}
-	for(i=0; i<shou_cnt; i++) 
+	if(fuhao==1)kou_cnt--;
+	int n;
+	scanf("%d",&n);
+	int zs[n],zy[n],kk[n],yy[n],ys[n];
+	for(i=0;i<n;i++)
 	{
-		printf("%s",shou[i]);
+		scanf("%d %d %d %d %d",&zs[i],&zy[i],&kk[i],&yy[i],&ys[i]);
 	}
-	printf("\n");
-	for(i=0; i<yan_cnt; i++) 
+	for(i=0;i<n;i++)
 	{
-		printf("%s",yan[i]);
+		if(zs[i]>shou_cnt||ys[i]>shou_cnt||zy[i]>yan_cnt||yy[i]>yan_cnt||kk[i]>kou_cnt
+		   ||zs[i]<1||ys[i]<1||zy[i]<1||yy[i]<1||kk[i]<1)
+			printf("Are you kidding me? @\\/@\n");
+		else
+		{
+			printf("%s(%s%s%s)%s\n",shou[zs[i]-1],yan[zy[i]-1],kou[kk[i]-1],yan[yy[i]-1],shou[ys[i]-1]);
+		}
 	}
-	printf("\n");
-	for(i=0; i<kou_cnt; i++) 
-	{
-		printf("%s",kou[i]);
-	}
-	printf("\n");
 	return 0;
 }
