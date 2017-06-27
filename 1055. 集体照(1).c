@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 
 struct po{
 	char name[9];
 	int height;
 };
+
+int cmp(const void* v1, const void* v2);
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
 	for(i=0;i<n;i++)
 	{
 		scanf("%s %d",&p[i].name,&p[i].height);
-	#if 0 
+	#if 0 //使用此法排序，测试点3和5运行超时 
 		scanf("%s %d",&pn,&ph);
 		//身高从高到低 
 		for(j=0;j<i;j++)
@@ -36,7 +37,7 @@ int main()
 		strcpy(p[i].name,pn);	
 	#endif	
 	}
-	qsort(p,n,sizeof(po), cmp);
+	qsort(p,n,sizeof(struct po),cmp);//使用qsort函数排序，全部通过 
 	int m,mk;
 	m=n/k;
 	mk=n-m*(k-1);
@@ -51,7 +52,8 @@ int main()
 			if(kn>=1)s[c-1]=mk+(kn-1)*m+cnt;
 			else s[c-1]=cnt;
 			cnt++;
-			c=c+pow(-1,cnt%2)*cnt;
+			if((cnt%2)!=0)c-=cnt;
+			else c+=cnt;
 		}
 		for(j=0;j<t;j++)
 		{
@@ -64,4 +66,10 @@ int main()
 	}
 	return 0;
 }
-//测试点3 5 运行超时 
+
+int cmp(const void* v1, const void* v2)//降序排列
+{
+    if(((struct po*)v1)->height - ((struct po*)v2)->height > 0)return -1;
+    else if(((struct po*)v1)->height - ((struct po*)v2)->height < 0)return 1;
+    else return strcmp(((struct po*)v1)->name, ((struct po*)v2)->name);
+}
