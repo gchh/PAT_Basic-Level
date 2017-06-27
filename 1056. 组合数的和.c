@@ -1,14 +1,12 @@
 #include <stdio.h>
-#include <string.h>
 
 int main()
 {
-	char c;
-	int i,cnt=0,n[10],sum=0;
-	while((c=getchar())!='\n')
+	int N,i,cnt=0,n[10],sum=0;
+	scanf("%d",&N);
+	while(cnt<N)
 	{
-		if(c==' ')continue;
-		n[cnt]=c-'0';
+		scanf("%d",&n[cnt]);
 		for(i=0;i<cnt;i++)
 		{
 			sum+=n[i]*10+n[cnt];
@@ -16,6 +14,6 @@ int main()
 		}
 		cnt++;
 	}
-	printf("%d",sum);
+	printf("%d\n",sum);
 	return 0;
 }
