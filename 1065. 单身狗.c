@@ -1,51 +1,61 @@
 #include <stdio.h>
 
+struct PL{
+	int a_id;
+	int b_id;
+	int a_cnt;
+	int b_cnt;
+};
 int main()
 {
 	int N;
 	scanf("%d",&N);
-	int i,n[N][2];
+	int i;
+	struct PL pl[N];
 	for(i=0;i<N;i++)
 	{
-		scanf("%d %d",&n[i][0],&n[i][1]);
+		scanf("%d %d",&pl[i].a_id,&pl[i].b_id);
+		pl[i].a_cnt=0;
+		pl[i].b_cnt=0;
 	}
 	int M;
 	scanf("%d",&M);
-	int j,k,a,db[N],cnt=0,id[100000]={0};
-	for(i=0;i<N;i++)db[i]=0;
+	int j,a,ds_cnt=0,ds_id[100000]={0};
 	for(i=0;i<M;i++)
 	{
 		scanf("%d",&a);
-		id[a]++;
+		ds_id[a]++;
+		ds_cnt++;
 		for(j=0;j<N;j++)
 		{
-			for(k=0;k<2;k++)
+			if(a==pl[j].a_id)
 			{
-				if(a==n[j][k])
-				{
-					db[j]++;
-					break;
-				}
+				pl[j].a_cnt++;
+				break;
 			}
-			if(db[j]>0)break;
+			if(a==pl[j].b_id)
+			{
+				pl[j].b_cnt++;
+				break;
+			}
 		}
-		if(db[j]==2)
+		if(pl[j].a_cnt==pl[j].b_cnt&&pl[j].b_cnt>0&&j<N)
 		{
-			cnt++;
-			id[a]++;
-			id[n[j][1-k]]++;
+			ds_id[pl[j].a_id]=0;
+			ds_id[pl[j].b_id]=0;
+			ds_cnt-=2;
 		}
 	}
-	int dcnt=M-cnt;
-	printf("%d\n",dcnt);
+	printf("%d\n",ds_cnt);
 	for(i=0;i<100000;i++)
 	{
-		if(id[i]==1)
+		if(ds_id[i]>0)
 		{
-			if(dcnt==1)printf("%05d\n",i);
+			if(ds_cnt==1)printf("%05d\n",i);
 			else printf("%05d ",i);
-			dcnt--;
+			ds_cnt--;
 		}
 	}
 	return 0;
 }
+//测试点3和4，运行超时 
