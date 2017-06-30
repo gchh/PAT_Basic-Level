@@ -20,7 +20,7 @@ int main()
 		}
 	}
 	int g,h,k,cnt=0,tol1,tol2,tol3,tol4,tol5,tol6,tol7,tol8;
-	struct Point *point=(struct Point*)malloc(sizeof(struct Point));;
+	struct Point *point=(struct Point*)malloc(sizeof(struct Point));
 	for(i=0;i<n;i++)
 	{
 		for(j=0;j<m;j++)
@@ -66,28 +66,29 @@ int main()
 				{
 					if(point[cnt].yanse==point[g].yanse)
 					{
-						
+						point[cnt].hang=-1;
+						point[cnt].lie=-1;
+						point[g].hang=-1;
+						point[g].lie=-1;						
 					}
 				}
-				//h=i;
-				//k=j;
 				//printf("(%d, %d): %d\n",k+1,h+1,xs[h][k]);
 				cnt++;
 			}
 		}
 	}
-	for(i=0;i<cnt;i++)
+	int cnt1=cnt;
+	for(i=0;i<cnt1;i++)
 	{
-		for(j=1;j<cnt;j++)
+		if(point[g].hang==-1)cnt--;
+		else
 		{
-			if(point[i].yanse==point[j].yanse)
-			{
-				
-			}
+			h=point[i].hang;
+			k=point[i].lie;
 		}
 	}
 	if(cnt==0)printf("Not Exist\n");
-	else if(cnt==1)printf("(%d, %d): %d\n",k+1,h+1,xs[h][k]);
+	else if(cnt==1)printf("(%d, %d): %d\n",k,h,xs[h-1][k-1]);//printf("(%d, %d): %d\n",point[0].lie,point[0].hang,point[0].yanse);//printf("(%d, %d): %d\n",k+1,h+1,xs[h][k]);
 	else printf("Not Unique\n");
 	free(point);
 	return 0;
